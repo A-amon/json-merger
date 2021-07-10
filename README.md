@@ -2,7 +2,7 @@
 
 A VsCode extension to:
 
-* Merge 2 or more JSON files easily\
+* Merge 2 or more JSON files easily
 * Only preserve the keys needed
 
 ## How to use
