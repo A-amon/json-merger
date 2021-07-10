@@ -13,22 +13,27 @@ function activate (context) {
 
 		const { filename, sources, identifier, keys } = readContent(currentDoc)
 
-		vscode.window.showInformationMessage(`Merging...`)
+		//requires at least 2 sources
+		if (sources.length > 1) {
+			vscode.window.showInformationMessage(`Merging...`)
 
-		readSources(sources, keys).then(sourcesData => {
-			const mergedData = mergeData(sourcesData, keys, identifier)
-			vscode.window.showInformationMessage('Finished merging!')
+			readSources(sources, keys).then(sourcesData => {
+				const mergedData = mergeData(sourcesData, keys, identifier)
+				vscode.window.showInformationMessage('Finished merging!')
 
-			writeToJson(filename, mergedData).then(() => {
-				vscode.window.showInformationMessage(`${filename}.json created!`)
+				writeToJson(filename, mergedData).then(() => {
+					vscode.window.showInformationMessage(`${filename}.json created!`)
+				}).catch(err => {
+					vscode.window.showWarningMessage(`Error writing to file.`)
+				})
+
 			}).catch(err => {
-				vscode.window.showWarningMessage(`Error writing to file.`)
+				vscode.window.showWarningMessage(`Error merging. Please check source files.`)
 			})
-
-		}).catch(err => {
-			vscode.window.showWarningMessage(`Error merging. Please check source files.`)
-		})
-
+		}
+		else {
+			vscode.window.showWarningMessage(`Require 2 or more source files.`)
+		}
 	});
 
 	context.subscriptions.push(disposable);
