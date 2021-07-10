@@ -1,7 +1,9 @@
 # JSON Merger
 
-Merge 2 or more JSON files easily\
-And only preserve the keys needed
+A VsCode extension to:
+
+* Merge 2 or more JSON files easily\
+* Only preserve the keys needed
 
 ## How to use
 Create a config as shown below:
