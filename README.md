@@ -6,7 +6,7 @@ A VsCode extension to:
 * Only preserve the keys needed
 
 ## How to use
-Create a config as shown below:
+Create a config with following keys/values:
 | key      | description                 |
 |----------|-----------------------------|
 |filename  |Name of merged file          |
@@ -18,6 +18,9 @@ Create a config as shown below:
 * Config syntax is correct(proper JSON syntaxes)
 * Source files are in same directory as config
 
+**Sample scenario:** Merge fileA.json and fileB.json with following requirements:
+* Take *num, name, img, weaknesses, next_evolution* values from fileA.json
+* Take *type, base* from fileB.json
 
 ### Config
 ```
