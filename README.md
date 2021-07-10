@@ -1,65 +1,66 @@
-# json-merger README
+# JSON Merger
 
-This is the README for your extension "json-merger". After writing up a brief description, we recommend including the following sections.
+Merge 2 or more JSON files easily\
+And only preserve the keys needed
 
-## Features
+## How to use
+Create a config as shown below:
+| key      | description                 |
+|----------|-----------------------------|
+|filename  |Name of merged file          |
+|sources   |JSON files to be merged      |
+|identifier|Uniquely identify each record|
+|keys      |Needed keys from each source |
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Config
+```
+{
+    "filename":"test",
+    "sources":["fileA.json","fileB.json"],
+    "identifier":"id",
+    "keys":{
+        "fileA":["num", "name", "img","weaknesses","next_evolution"],
+        "fileB":["type","base"]
+    }
+}
+```
+### Files to merge
 
-For example if there is an image subfolder under your extension project workspace:
+fileA.json
+```
+[
+    {
+        "id": 1,
+        "num": "001",
+        "name": "Bulbasaur",
+        "img": "http://www.serebii.net/pokemongo/pokemon/001.png",
+     ...
+```
+fileB.json
+```
+[
+    {
+        "id": 1,
+        "name": {
+            "english": "Bulbasaur",
+            "japanese": "フシギダネ",
+            "chinese": "妙蛙种子",
+            "french": "Bulbizarre"
+        },
+       ...
+```
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+### Result
+test.json
+```
+[
+    {
+        "id": 1,
+        "num": "001",
+        "name": "Bulbasaur",
+        "img": "http://www.serebii.net/pokemongo/pokemon/001.png",
+        "weaknesses": [
+            "Fire",
+            "Ice",
+         ...
+```
