@@ -36,7 +36,7 @@ Create a config with following keys/values:
 ```
 ### Files to merge
 
-fileA.json
+fileA.json (Credits to [Pokedex.json](https://github.com/Biuni/PokemonGO-Pokedex/blob/master/pokedex.json))
 ```
 [
     {
@@ -46,7 +46,7 @@ fileA.json
         "img": "http://www.serebii.net/pokemongo/pokemon/001.png",
      ...
 ```
-fileB.json
+fileB.json (Credits to [Pokemon.json](https://github.com/fanzeyi/pokemon.json/blob/master/pokedex.json))
 ```
 [
     {
