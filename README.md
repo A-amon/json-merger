@@ -19,7 +19,7 @@ Create a config as shown below:
 * Source files are in same directory as config
 
 
-Config
+### Config
 ```
 {
     "filename":"test",
