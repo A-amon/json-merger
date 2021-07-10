@@ -24,11 +24,11 @@ function activate (context) {
 				writeToJson(filename, mergedData).then(() => {
 					vscode.window.showInformationMessage(`${filename}.json created!`)
 				}).catch(err => {
-					vscode.window.showWarningMessage(`Error writing to file.`)
+					vscode.window.showWarningMessage(`Error writing to file:${err.message}`)
 				})
 
 			}).catch(err => {
-				vscode.window.showWarningMessage(`Error merging. Please check source files.`)
+				vscode.window.showWarningMessage(`Error merging:${err.message}`)
 			})
 		}
 		else {
@@ -129,5 +129,11 @@ function deactivate () { }
 
 module.exports = {
 	activate,
-	deactivate
+	deactivate,
+	readContent,
+	readSources,
+	getFolderPath,
+	getShortestSource,
+	mergeData,
+	writeToJson
 }
