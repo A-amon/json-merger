@@ -14,6 +14,11 @@ Create a config as shown below:
 |identifier|Uniquely identify each record|
 |keys      |Needed keys from each source |
 
+**Note:** Few things to make sure before running the extension
+* Config syntax is correct(proper JSON syntaxes)
+* Source files are in same directory as config
+
+
 Config
 ```
 {
